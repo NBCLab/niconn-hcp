@@ -22,22 +22,22 @@ def main(argv=None):
     work_dir = args.work_dir
     ppt = args.ppt
 
-    nii_files = sorted(glob(op.join(rs_data_dir, ppt, 'MNINonLinear', 'Results', 'rfMRI_REST*', 'rfMRI_REST*_hp2000_clean.nii.gz')))
+    nii_files = sorted(glob(op.join(rs_data_dir, ppt, 'rfMRI_REST*', 'rfMRI_REST*_hp2000_clean.nii.gz')))
     nii_files = [x for x in nii_files if '7T' not in x]
 
     for nii_fn in nii_files:
         print(nii_fn)
 
         #check to see if smoothed data exists
-        smooth_fn = op.join(rs_data_dir, 'derivatives', 'smoothed', ppt, '{0}_smooth.nii.gz'.format(op.basename(nii_fn).split('.')[0]))
+        #smooth_fn = op.join(rs_data_dir, 'derivatives', 'smoothed', ppt, '{0}_smooth.nii.gz'.format(op.basename(nii_fn).split('.')[0]))
 
-        if not op.isfile(smooth_fn):
+        #if not op.isfile(smooth_fn):
 
-            tmp_output_dir = op.join(rs_data_dir, 'derivatives', 'smoothed', ppt)
-            if not op.isdir(tmp_output_dir):
-                os.makedirs(tmp_output_dir)
-            nii_work_dir = op.join(work_dir, 'rsfc', ppt, op.basename(nii_fn).split('.')[0])
-            rs_preprocess(nii_fn, 4, nii_work_dir, tmp_output_dir)
+        tmp_output_dir = op.join(rs_data_dir, 'derivatives', 'gsr+smooth', ppt)
+        if not op.isdir(tmp_output_dir):
+            os.makedirs(tmp_output_dir)
+        nii_work_dir = op.join(work_dir, 'rsfc', ppt, op.basename(nii_fn).split('.')[0])
+        rs_preprocess(nii_fn, 4, nii_work_dir, tmp_output_dir)
 
 
 if __name__ == '__main__':

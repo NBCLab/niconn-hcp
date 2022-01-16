@@ -31,5 +31,5 @@ for sub in $subs; do
            --account=iacc_nbc \
            --qos=pq_nbc \
            -n 1 \
-           --wrap="python3 $hcp_data_dir/code/rs-all-coords.py --rs_data_dir $hcp_data_dir --work_dir /scratch/miriedel/niconn-hcp --participant_id $sub --roi_dir /home/data/nbc/misc-projects/meta-analyses/meta-analysis_implicit-learning/derivatives/rois"
+           --wrap="python3 $hcp_data_dir/code/rs-all-coords.py --rs_data_dir $hcp_data_dir --work_dir /scratch/miriedel/niconn-hcp --participant_id $sub --roi_dir /home/data/abcd/abcd-hispanic-via/code/vmPFC_rsfc/rsfc_rois"
 done

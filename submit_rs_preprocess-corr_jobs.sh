@@ -27,4 +27,5 @@ for sub in $subs; do
          --qos=pq_nbc \
          -n 2 \
          --wrap="python3 $hcp_data_dir/code/rs_preprocess-corr.py --rs_data_dir $hcp_data_dir/hcp-openaccess/HCP1200 --work_dir /scratch/nbc/miriedel/niconn-hcp --participant_id $sub"
+
 done

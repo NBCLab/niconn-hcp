@@ -9,9 +9,9 @@ if [ ! -d $hcp_data_dir/code/out ]; then
 fi
 
 #maskdir=$hcp_data_dir/code/hoa_amygdala_right
-maskdir=/home/data/nbc/misc-projects/meta-analyses/meta-analysis_implicit-learning/derivatives/rois
+maskdir=/home/data/abcd/abcd-hispanic-via/code/vmPFC_rsfc/rsfc_rois
 masks=$(dir $maskdir)
-output_dir=/home/data/nbc/misc-projects/meta-analyses/meta-analysis_implicit-learning/derivatives/rsfc
+output_dir=/home/data/abcd/abcd-hispanic-via/derivatives/hcp_rsfc
 if [ ! -d $output_dir ]; then
   mkdir -p $output_dir
 fi
@@ -28,6 +28,6 @@ for tmp_mask in $masks; do
          -p investor \
          --account=iacc_nbc \
          --qos=pq_nbc \
-         -n 1 \
+         -c 8 \
          --wrap="python3 $hcp_data_dir/code/rs_grpanalysis-corr.py --rs_data_dir $hcp_data_dir/hcp-openaccess/HCP1200 --output_dir $output_dir --work_dir /scratch/nbc/miriedel/niconn-hcp --mask_fn $maskdir/$tmp_mask"
 done

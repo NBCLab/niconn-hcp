@@ -27,12 +27,14 @@ def main(argv=None):
 
     rois = os.listdir(roi_dir)
 
-    nii_files = sorted(glob(op.join(rs_data_dir, 'hcp-openaccess', 'HCP1200', ppt, 'MNINonLinear', 'Results', 'rfMRI_REST*', 'rfMRI_REST*_hp2000_clean.nii.gz')))
-    nii_files = [x for x in nii_files if '7T' not in x]
+    #nii_files = sorted(glob(op.join(rs_data_dir, 'hcp-openaccess', 'HCP1200', ppt, 'MNINonLinear', 'Results', 'rfMRI_REST*', 'rfMRI_REST*_hp2000_clean.nii.gz')))
+    #nii_files = [x for x in nii_files if '7T' not in x]
+    nii_files = sorted(glob(op.join(rs_data_dir, 'hcp-openaccess', 'HCP1200', 'derivatives', 'smoothed', ppt, '*_smooth.nii.gz')))
 
     for nii_fn in nii_files:
-        smooth_fn = op.join(rs_data_dir, 'hcp-openaccess', 'HCP1200', 'derivatives', 'smoothed', ppt, '{0}_smooth.nii.gz'.format(op.basename(nii_fn).split('.')[0]))
-
+        #smooth_fn = op.join(rs_data_dir, 'hcp-openaccess', 'HCP1200', 'derivatives', 'smoothed', ppt, '{0}_smooth.nii.gz'.format(op.basename(nii_fn).split('.')[0]))
+        smooth_fn = nii_fn
+        
         mask_fn = "_".join(op.basename(smooth_fn).split('.')[0].split('_')[:-1])
 
         brainmask = nib.load(op.join(op.dirname(smooth_fn), '{prefix}_mask.nii.gz'.format(prefix=mask_fn)))
